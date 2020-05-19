@@ -6,7 +6,7 @@ class FederationsController < ApplicationController
 
   def show
     federation = Federation.find(params[:id])
-    render jsonapi: federation
+    render jsonapi: federation, include: [:teams]
   end
 
   def create

@@ -4,4 +4,5 @@ class SerializableArea < JSONAPI::Serializable::Resource
   attributes :name
 
   has_many :teams
+  has_many :federations
 end
