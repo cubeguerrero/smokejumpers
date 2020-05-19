@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   def index
     teams = Team.all
-    render jsonapi: teams, include: [:federation]
+    render jsonapi: teams
   end
 
   def show

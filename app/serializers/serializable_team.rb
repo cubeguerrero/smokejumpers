@@ -4,4 +4,5 @@ class SerializableTeam < JSONAPI::Serializable::Resource
   attributes :name
 
   belongs_to :federation
+  belongs_to :area
 end
