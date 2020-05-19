@@ -1,5 +1,5 @@
 class Federation < ApplicationRecord
-  has_many :teams
+  has_many :teams, dependent: :destroy
   has_many :areas, through: :teams
 
   validates :name, presence: true

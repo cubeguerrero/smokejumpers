@@ -22,12 +22,16 @@ class FederationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "POST :create" do
-    post federations_url, params: { federation: { name: "Some Federation", description: "This is a description." } }
+    assert_difference('Federation.count') do
+      post federations_url, params: { federation: { name: "Some Federation", description: "This is a description." } }
+    end
     assert_response :success
   end
 
   test "POST :create with invalid params" do
-    post federations_url, params: { federation: { name: "" } }
+    assert_no_difference('Federation.count') do
+      post federations_url, params: { federation: { name: "" } }
+    end
     assert_response :unprocessable_entity
   end
 
