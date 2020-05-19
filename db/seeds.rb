@@ -27,3 +27,14 @@ mccall = Team.find_or_create_by(area: great_basin, federation: usfs, name: "McCa
 boise = Team.find_or_create_by(area: great_basin, federation: blm, name: "Boise Smokejumpers")
 alaska_smokejumper = Team.find_or_create_by(area: alaska, federation: blm, name: "Alaska Smokejumpers")
 north_peace = Team.find_or_create_by(area: canada, federation: bcpp, name: "North-Peace Smokejumpers")
+
+100.times do
+  team = [redmond, north_cascades, region_five, missoula, grangeville, west_yellowstone, mccall, boise, alaska_smokejumper, north_peace].sample
+  age_range = (21..65).to_a
+  Member.find_or_create_by(
+    name: Faker::Name.name,
+    age: age_range.sample,
+    bio: Faker::Lorem.sentence(word_count: 10),
+    team: team
+  )
+end
