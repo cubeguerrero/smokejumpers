@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_120109) do
+ActiveRecord::Schema.define(version: 2020_05_19_114141) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -25,4 +25,16 @@ ActiveRecord::Schema.define(version: 2020_05_11_120109) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "area_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "federation_id", null: false
+    t.index ["area_id"], name: "index_teams_on_area_id"
+    t.index ["federation_id"], name: "index_teams_on_federation_id"
+  end
+
+  add_foreign_key "teams", "areas"
+  add_foreign_key "teams", "federations"
 end
