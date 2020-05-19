@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+john:
+  team: redmond
+  name: John Doe
+  age: 31
+  bio: John Doe is the name used for missing persons.
+
+jane:
+  team: boise
+  name: Jane Doe
+  age: 64
+  bio: Jane Doe is the name used for a missing girl/woman.
