@@ -3,5 +3,5 @@ class SerializableMember < JSONAPI::Serializable::Resource
 
   attributes :name, :age, :bio
 
-  belongs_to :teams
+  belongs_to :team
 end
