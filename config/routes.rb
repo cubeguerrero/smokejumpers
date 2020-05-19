@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :areas, only: [:index, :show]
   resources :federations
   resources :teams
+  resources :members
 end
