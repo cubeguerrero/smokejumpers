@@ -31,6 +31,9 @@ gem 'jsonapi-rails', '~> 0.4.0'
 # Use faker for seeding data
 gem 'faker', '~> 2.11'
 
+# Add GraphQL
+gem 'graphql', '~> 1.10', '>= 1.10.10'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
