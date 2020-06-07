@@ -15,5 +15,21 @@ module Types
     def teams
       Team.all
     end
+
+    field :areas,
+          [Types::AreaType],
+          null: false,
+          description: "Returns a list of areas in the database."
+    def areas
+      Area.all
+    end
+
+    field :members,
+          [Types::MemberType],
+          null: false,
+          description: "Returns a list of smokejumpers."
+    def members
+      Member.all
+    end
   end
 end
