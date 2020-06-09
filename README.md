@@ -1,24 +1,57 @@
-# README
+# How to run this project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run the following to check if you have Docker installed, you can find the instructions for installing Docker [here](https://docs.docker.com/get-docker/)
 
-Things you may want to cover:
+```
+> docker version
+Client: Docker Engine - Community
+ Version:           19.03.8
+ API version:       1.40
+ Go version:        go1.12.17
+ Git commit:        afacb8b
+ Built:             Wed Mar 11 01:21:11 2020
+ OS/Arch:           darwin/amd64
+ Experimental:      false
+```
 
-* Ruby version
+The project uses two images to run:
+1. `web` - which hosts the Rails application
+2. `db` - which hosts the MySQL database
 
-* System dependencies
+All you need to do to run the project is run the following commands:
+```
+> docker-compose up -d # will run the containers in detached mode
+> docker-compose exec web bundle exec rails db:setup
+```
+After, visit http://localhost:3000 and you should see the `Welcome to Smokejumpers` message.
 
-* Configuration
+ # Commands
+ The following are the commands I ran during the presentation
 
-* Database creation
+ ## For interacting with Docker Engine:
+ ```
+ # Get container names
+ curl --unix-socket /var/run/docker.sock http:/v1.24/containers/json | jq '.[] | { Names }'
 
-* Database initialization
+ # Get images id
+ curl --unix-socket /var/run/docker.sock http:/v1.24/images/json | jq '.[] | { Id }'
+ ```
+ 
+## For getting the available routes in a Rails project
+```
+docker-compose exec web bundle exec rails routes
 
-* How to run the test suite
+# OR, if you're a collaborator in Heroku application
 
-* Services (job queues, cache servers, search engines, etc.)
+heroku run rails routes -a smokejumperss
+```
 
-* Deployment instructions
+## For running Rails console
+```
+docker-compose exec web bundle exec rails console
 
-* ...
+# OR, if you have access to the Heroku application
+
+heroku run rails console -a smokejumperss
+```
+
